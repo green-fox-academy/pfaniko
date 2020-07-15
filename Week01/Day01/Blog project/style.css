@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding:0;
+}
+.main{
+    background-color: rebeccapurple;
+    font-family: 'Grenze Gotisch', cursive;
+    padding-left: 20px;
+}
+.title{
+    font-weight: bold;
+    padding-left: 20px;
+}
+.content{
+    border-style: solid;
+    margin: 2%;
+}
+.header{
+    font-family: 'Open Sans Condensed', sans-serif;
+    padding-left: 20px;
+    margin: 2%;
+}
+.button{
+    font-weight: bold;    
+    border-style: solid;
+    border-radius: 5px;
+    border-style: outset;
+    background-color: lavender;
+    width: 50px;
+    height:20px;
+    margin-left: 20px;      
+}
+p {
+    margin: 0;
+}

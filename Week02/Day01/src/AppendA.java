@@ -10,6 +10,6 @@ public class AppendA {
     for (int i = 0; i < animals.length; i++) {
       animals [i]=animals[i] +"a";
     }
-    System.out.println(Arrays.deepToString(animals));
+    System.out.println(Arrays.toString(animals));
   }
 }

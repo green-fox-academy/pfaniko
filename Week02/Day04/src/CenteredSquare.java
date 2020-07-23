@@ -20,7 +20,7 @@ public class CenteredSquare {
         {halfHeight - halfEdge, halfHeight - halfEdge, halfHeight + halfEdge,
             halfHeight + halfEdge};
     graphics.setColor(Color.GREEN);
-    graphics.drawPolygon(xCoordinates, yCoordinates, xCoordinates.length);
+    graphics.fillPolygon(xCoordinates, yCoordinates, xCoordinates.length);
   }
 
   // Don't touch the code below

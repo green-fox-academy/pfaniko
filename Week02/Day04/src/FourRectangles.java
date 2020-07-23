@@ -12,20 +12,20 @@ public class FourRectangles {
     // draw four different size and color rectangles.
     // avoid code duplication.
 
-    int x = 20;
-    int y = 50;
-    int height = 50;
-    int width = 50;
+    int x;
+    int y;
+    int height;
+    int width;
+    Random random = new Random();
     for (int i = 0; i < 4; i++) {
-      graphics.setColor(getRandomColor());
-      graphics.drawRect(x, y, width, height);
-      Random random = new Random();
       x = random.nextInt(WIDTH);
       y = random.nextInt(HEIGHT);
       int limitHeight = HEIGHT - y;
       int limitWidth = WIDTH - x;
       height = random.nextInt(limitHeight);
       width = random.nextInt(limitWidth);
+      graphics.setColor(getRandomColor());
+      graphics.drawRect(x, y, width, height);
     }
   }
 

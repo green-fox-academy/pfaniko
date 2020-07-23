@@ -1,33 +1,31 @@
 import javax.swing.*;
 
 import java.awt.*;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class GoToCenter {
+public class HorizontalLines {
   public static void mainDraw(Graphics graphics) {
     // Create a function that draws a single line and takes 3 parameters:
     // The x and y coordinates of the line's starting point and the graphics
-    // and draws a line from that point to the center of the canvas.
+    // and draws a 50 long horizontal line from that point.
     // Draw at least 3 lines with that function using a loop.
 
     int x = 20;
-    int y = 50;
+    int y = 150;
     int change = 50;
 
     for (int i = 0; i < 3; i++) {
-      drawASingleLine(graphics, x, y);
+      drawA50LongHorizontalLine(graphics, x, y);
       x = x + change;
       y = y + change;
     }
   }
 
-  public static void drawASingleLine(Graphics graphics, int x, int y) {
-    int xCenter = HEIGHT / 2;
-    int yCenter = WIDTH / 2;
-    graphics.drawLine(x, y, xCenter, yCenter);
+  public static void drawA50LongHorizontalLine(Graphics graphics, int x, int y) {
+    int z = x + 50;
+    graphics.drawLine(x, y, z, y);
   }
 
   // Don't touch the code below

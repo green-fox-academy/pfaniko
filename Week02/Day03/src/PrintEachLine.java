@@ -1,6 +1,8 @@
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Scanner;
 
 public class PrintEachLine {
@@ -11,6 +13,7 @@ public class PrintEachLine {
     // then it should print the following error message: "Unable to read file: my-file.txt"
     try {
       Path path = Paths.get("my-file.txt");
+      List<String> text = Files.readAllLines(path);
       Scanner scanner = new Scanner(path);
       while (scanner.hasNextLine()) {
         String line = scanner.nextLine();

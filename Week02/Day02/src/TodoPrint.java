@@ -14,7 +14,7 @@ public class TodoPrint {
     todoText = "My todo:\n" + todoText;
     String text1 = " - Download Games\n";
     String text2 = " - Diablo";
-    String indent = "    ";
+    String indent = "\t";
     todoText = todoText.concat(text1).concat(indent).concat(text2);
     System.out.println(todoText);
   }

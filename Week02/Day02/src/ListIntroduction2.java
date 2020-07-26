@@ -14,6 +14,7 @@ public class ListIntroduction2 {
     System.out.println(ListA.contains("Durian"));
     ListB.remove("Durian");
     ListA.add(4, "Kiwifruit");
+
     if (ListA.size() > ListB.size()) {
       System.out.println("List A is longer");
     } else if (ListA.size() == ListB.size()) {
@@ -21,12 +22,15 @@ public class ListIntroduction2 {
     } else {
       System.out.println("List B is longer");
     }
+
     System.out.println(ListA.indexOf("Avocado"));
+
     if (ListB.contains("Durian")) {
       System.out.println(ListB.indexOf("Durian"));
     } else {
       System.out.println("Durian is not included in the list");
     }
+
     ArrayList<String> newList = new ArrayList<String>();
     ListB.addAll(Arrays.asList("Passion Fruit", "Pomelo"));
     System.out.println(ListA.get(2));

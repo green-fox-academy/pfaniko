@@ -20,6 +20,7 @@ public class Counter {
   public int get() {
     return counter;
   }
+
   public void reset() {
     counter = defaultCounter;
   }

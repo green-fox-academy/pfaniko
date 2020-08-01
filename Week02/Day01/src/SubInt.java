@@ -15,6 +15,9 @@ public class SubInt {
 
     System.out.println(Arrays.toString(subInt(1, new int[] {1, 11, 34, 52, 61})));
     System.out.println(Arrays.toString(subInt(9, new int[] {1, 11, 34, 52, 61})));
+
+    System.out.println(Arrays.toString(subIntEasy(1, new int[] {1, 11, 34, 52, 61})));
+    System.out.println(Arrays.toString(subIntEasy(9, new int[] {1, 11, 34, 52, 61})));
   }
 
   public static Integer[] subInt(int a, int[] listOfNumbers) {
@@ -27,5 +30,18 @@ public class SubInt {
     }
     Integer[] result = new Integer[tempArray.size()];
     return tempArray.toArray(result);
+  }
+
+  public static int[] subIntEasy(int a, int[] listOfNumbers) {
+    int[] array = new int[listOfNumbers.length];
+    int index = 0;
+    String temp = Integer.toString(a);
+    for (int i = 0; i < listOfNumbers.length; i++) {
+      if (Integer.toString(listOfNumbers[i]).contains(temp)) {
+        array[index] = i;
+        index++;
+      }
+    }
+    return Arrays.copyOfRange(array, 0, index);
   }
 }

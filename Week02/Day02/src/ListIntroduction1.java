@@ -6,7 +6,7 @@ public class ListIntroduction1 {
     ArrayList<String> names = new ArrayList<String>();
     System.out.println(names.size());
     names.add("William");
-    System.out.println(names.git isEmpty());
+    System.out.println(names.isEmpty());
     names.add("John");
     names.add("Amanda");
     System.out.println(names.size());

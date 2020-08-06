@@ -3,34 +3,33 @@ package AircraftCarrier;
 public class Aircrafts {
   private String type;
   private int maxAmmo;
-  private int ammoStorage;
+  private int currentAmmo;
   private int baseDamage;
 
   public Aircrafts(String type, int maxAmmo, int baseDamage) {
     this.type = type;
     this.maxAmmo = maxAmmo;
-    this.ammoStorage = 0;
+    this.currentAmmo = 0;
     this.baseDamage = baseDamage;
   }
-
-
+  
   public Integer fight() {
     int damagePerAircraft = damageDealt();
-    ammoStorage = 0;
+    currentAmmo = 0;
     return damagePerAircraft;
   }
 
   public Integer damageDealt() {
-    return baseDamage * ammoStorage;
+    return baseDamage * currentAmmo;
   }
 
   public Integer refill(int availableAmmo) {
-    int ammoNeeded = maxAmmo - ammoStorage;
+    int ammoNeeded = maxAmmo - currentAmmo;
     if (availableAmmo >= ammoNeeded) {
-      ammoStorage += ammoNeeded;
+      currentAmmo += ammoNeeded;
       availableAmmo -= ammoNeeded;
     } else {
-      ammoStorage += availableAmmo;
+      currentAmmo += availableAmmo;
       availableAmmo = 0;
     }
     return availableAmmo;
@@ -38,7 +37,7 @@ public class Aircrafts {
 
   public void getStatus() {
     System.out.println(
-        "Type: " + this.type + ", Ammo: " + this.ammoStorage + ", Base Damage: " +
+        "Type: " + this.type + ", Ammo: " + this.currentAmmo + ", Base Damage: " +
             this.baseDamage +
             ", All Damage: " + damageDealt());
   }
@@ -51,7 +50,7 @@ public class Aircrafts {
     return maxAmmo;
   }
 
-  public int getAmmoStorage() {
-    return ammoStorage;
+  public int getCurrentAmmo() {
+    return currentAmmo;
   }
 }

@@ -1,5 +1,3 @@
-import java.awt.image.ImageObserver;
-import java.util.Random;
 import javax.swing.*;
 
 import java.awt.*;

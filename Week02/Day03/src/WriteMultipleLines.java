@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,11 +15,19 @@ public class WriteMultipleLines {
 // If the word is 'apple' and the number is 5, it should write 5 lines
 // into the file and each line should read 'apple'
 // The function should not raise any errors if it could not write the file.
-    String fileName = "my-file.txt";
-    addLines("my-file.txt");
+    Path path = Paths.get("MultipleLines.txt");
+    writeMultipleLines(path, "apple", 5);
   }
 
-  public static void addLines(String file) {
-  Path path =
+  public static void writeMultipleLines(Path path, String word, int number) {
+    List<String> lines = new ArrayList<>();
+    for (int i = 0; i < number; i++) {
+      lines.add(word);
+    }
+    try {
+      Files.write(path, lines);
+    } catch (IOException e) {
+      System.out.println("Can not write the file");
+    }
   }
 }

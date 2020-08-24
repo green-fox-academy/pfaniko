@@ -73,6 +73,6 @@ public class StreamExercises {
     //Exercise 9 - Write a Stream Expression to find the frequency of characters in a given string!
     Map<String, Long> charFrequency = Arrays.stream(stringExample.toLowerCase().split(""))
         .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
-    charFrequency.forEach((k, v) -> System.out.println(k + ":" + v));
+    System.out.println(charFrequency);
   }
 }

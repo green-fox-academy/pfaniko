@@ -1,0 +1,37 @@
+html {
+    background-color: white;
+}
+
+table {
+    width: 800px;
+    border-collapse: collapse;
+    border: 30px solid dodgerblue;
+}
+
+tbody tr:nth-child(odd) {
+    background: whitesmoke;
+}
+
+tbody tr:nth-child(even) {
+    background: lightgrey;
+}
+
+tbody th {
+    background: black;
+    color: darkgray;
+    text-align: left;
+    font-family: "Calibri", serif;
+    font-weight: normal;
+    font-size: larger;
+    padding: 20px;
+    border: 1px solid darkgray;
+    border-bottom-width: 3px;
+}
+
+tbody td {
+    border: 1px solid darkgray;
+    text-align: left;
+    padding: 20px;
+    color: grey;
+    font-family: "Berlin Sans FB", serif;
+}

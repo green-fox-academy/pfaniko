@@ -1,0 +1,60 @@
+html {
+    background-color: lightgrey;
+}
+
+body {
+    width: 50%;
+    margin: 15%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 5px;
+}
+
+header {
+    font-size: larger;
+    padding-bottom: 20px;
+}
+
+.logindetails {
+    text-align: left;
+    font-size: small;
+}
+
+.textboxuser {
+    text-align: left;
+    font-size: small;
+    padding-bottom: 20px;
+}
+
+input[type="text"]:focus {
+    border: 2px solid darkgreen;
+    outline: none;
+}
+
+.textboxpassword {
+    text-align: left;
+    font-size: small;
+}
+
+input [type="password"] {
+    content: '\f06e';
+}
+
+.additionaltext {
+    text-align: right;
+    font-size: x-small;
+    padding-bottom: 20px;
+}
+
+button {
+    display: block;
+    padding: 10px 30px;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    font-size: x-small;
+}

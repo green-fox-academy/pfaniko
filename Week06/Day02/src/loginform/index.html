@@ -2,9 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login Form</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<header>
+    <text> ACCOUNT LOGIN</text>
+</header>
+<form action="/login" method="post">
+    <div class=logindetails>
+        <label for="username">USERNAME:</label>
+    </div>
+    <div class=textboxuser>
+        <input type="text" id="username">
+    </div>
+    <div class=logindetails>
+        <label for="password">PASSWORD:</label>
+    </div>
+    <div class=textboxpassword>
+        <input type="password" id="password">
+    </div>
+    <div class=additionaltext>
+        <a href="http//forgotpassword.com">Forgot Password?</a>
+    </div>
+    <div>
+        <button>Login</button>
+    </div>
+</form>
 </body>
 </html>

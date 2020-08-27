@@ -9,6 +9,7 @@ header {
 }
 
 a {
+    width: 100%;
     background: indianred;
     color: white;
     font-size: small;
@@ -16,4 +17,19 @@ a {
     font-family: Calibri, cursive;
     padding: 5px;
     border-radius: 5px;
+}
+
+th {
+    background: dodgerblue;
+    padding: 20px;
+}
+
+table {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+td{
+    text-align: center;
+    font-family: Calibri, cursive;
 }

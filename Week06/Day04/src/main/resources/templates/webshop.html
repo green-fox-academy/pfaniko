@@ -12,5 +12,19 @@
 <a href="">CONTAINS NIKE</a>
 <a href="">AVERAGE STOCK</a>
 <a href="">MOST EXPENSIVE AVAILABLE</a>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity of stock</th>
+    </tr>
+    <tr th:each="shopItem : ${shopItems}">
+        <td th:text="${shopItem.getName()}"></td>
+        <td th:text="${shopItem.getDescription()}"></td>
+        <td th:text="${shopItem.getPrice()}"></td>
+        <td th:text="${shopItem.getQuantityOfStock()}"></td>
+    </tr>
+</table>
 </body>
 </html>

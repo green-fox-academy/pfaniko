@@ -29,10 +29,19 @@ public class WebShopController {
 
   @GetMapping("/only-available")
   public String getOnlyAvailable(Model model) {
-   List<ShopItem> filteredShopItems = shopItems.stream()
+    List<ShopItem> filteredShopItems = shopItems.stream()
         .filter(shopItem -> shopItem.getQuantityOfStock() != 0)
         .collect(Collectors.toList());
     model.addAttribute("shopItems", filteredShopItems);
+    return "/webshop";
+  }
+
+  @GetMapping("/cheapest-first")
+  public String sortCheapestFirst(Model model) {
+    List<ShopItem> sortedShopItems = shopItems.stream()
+        .sorted((shopItem1, shopItem2) -> (int) (shopItem1.getPrice()-shopItem2.getPrice()))
+        .collect(Collectors.toList());
+    model.addAttribute("shopItems", sortedShopItems);
     return "/webshop";
   }
 }

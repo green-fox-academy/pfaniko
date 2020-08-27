@@ -1,0 +1,19 @@
+header {
+    display: block;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Calibri, cursive;
+    color: dodgerblue;
+    border-bottom: 2px solid dodgerblue;
+    margin-bottom: 20px;
+}
+
+a {
+    background: indianred;
+    color: white;
+    font-size: small;
+    font-weight: bold;
+    font-family: Calibri, cursive;
+    padding: 5px;
+    border-radius: 5px;
+}

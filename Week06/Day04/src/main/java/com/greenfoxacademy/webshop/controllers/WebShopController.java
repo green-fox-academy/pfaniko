@@ -39,9 +39,30 @@ public class WebShopController {
   @GetMapping("/cheapest-first")
   public String sortCheapestFirst(Model model) {
     List<ShopItem> sortedShopItems = shopItems.stream()
-        .sorted((shopItem1, shopItem2) -> (int) (shopItem1.getPrice()-shopItem2.getPrice()))
+        .sorted((shopItem1, shopItem2) -> (int) (shopItem1.getPrice() - shopItem2.getPrice()))
         .collect(Collectors.toList());
     model.addAttribute("shopItems", sortedShopItems);
     return "/webshop";
+  }
+
+  @GetMapping("/contains-nike")
+  public String filterByBrand(Model model) {
+    String brand = "Nike";
+    List<ShopItem> filteredByBrand = shopItems.stream()
+        .filter(shopItem -> shopItem.getDescription().contains(brand) ||
+            shopItem.getName().contains(brand))
+        .collect(Collectors.toList());
+    model.addAttribute("shopItems", filteredByBrand);
+    return "/webshop";
+  }
+
+  @GetMapping("/average-stock")
+  public String averageStock(Model model) {
+    double averageStock = shopItems.stream()
+        .mapToInt(ShopItem::getQuantityOfStock)
+        .average()
+        .orElse(-1);
+    model.addAttribute("averageStock", averageStock);
+    return "averagestock";
   }
 }

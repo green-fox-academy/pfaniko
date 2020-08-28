@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class WebShopController {
@@ -73,6 +74,18 @@ public class WebShopController {
         .max(Comparator.comparingDouble(ShopItem::getPrice))
         .get();
     model.addAttribute("shopItems", mostExpensive);
+    return "webshop";
+  }
+
+  @PostMapping("/search")
+  public String filterBySearch(Model model, String search) {
+    List<ShopItem> filteredBySearchWorld = shopItems.stream()
+        .filter(shopItem -> shopItem.getDescription().contains(search) ||
+            shopItem.getDescription().toLowerCase().contains(search) ||
+            shopItem.getName().contains(search) ||
+            shopItem.getName().toLowerCase().contains(search))
+        .collect(Collectors.toList());
+    model.addAttribute("shopItems", filteredBySearchWorld);
     return "webshop";
   }
 }

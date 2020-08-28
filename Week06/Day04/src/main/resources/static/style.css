@@ -19,14 +19,14 @@ a {
     border-radius: 5px;
 }
 
-.searchbar {
+form {
     font-family: Calibri, cursive;
     color: indianred;
     margin-top: 20px;
 }
 
 input {
-    border: 1.5px solid indianred;
+    border: 2px solid indianred;
     outline: none;
 }
 

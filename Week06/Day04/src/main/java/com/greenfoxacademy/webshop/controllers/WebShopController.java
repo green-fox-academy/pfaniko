@@ -34,7 +34,7 @@ public class WebShopController {
         .filter(shopItem -> shopItem.getQuantityOfStock() != 0)
         .collect(Collectors.toList());
     model.addAttribute("shopItems", filteredShopItems);
-    return "/webshop";
+    return "webshop";
   }
 
   @GetMapping("/cheapest-first")
@@ -43,7 +43,7 @@ public class WebShopController {
         .sorted((shopItem1, shopItem2) -> (int) (shopItem1.getPrice() - shopItem2.getPrice()))
         .collect(Collectors.toList());
     model.addAttribute("shopItems", sortedShopItems);
-    return "/webshop";
+    return "webshop";
   }
 
   @GetMapping("/contains-nike")
@@ -54,7 +54,7 @@ public class WebShopController {
             shopItem.getName().contains(brand))
         .collect(Collectors.toList());
     model.addAttribute("shopItems", filteredByBrand);
-    return "/webshop";
+    return "webshop";
   }
 
   @GetMapping("/average-stock")
@@ -65,5 +65,14 @@ public class WebShopController {
         .orElse(-1);
     model.addAttribute("averageStock", averageStock);
     return "averagestock";
+  }
+
+  @GetMapping("/most-expensive")
+  public String getMostExpensive(Model model) {
+    ShopItem mostExpensive = shopItems.stream()
+        .max(Comparator.comparingDouble(ShopItem::getPrice))
+        .get();
+    model.addAttribute("shopItems", mostExpensive);
+    return "webshop";
   }
 }

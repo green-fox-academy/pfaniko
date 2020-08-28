@@ -30,7 +30,7 @@
     <tr th:each="shopItem : ${shopItems}">
         <td th:text="${shopItem.getName()}"></td>
         <td th:text="${shopItem.getDescription()}"></td>
-        <td th:text="${shopItem.getPrice()}"></td>
+        <td th:text="${shopItem.getPrice()} + ' Kč'"></td>
         <td th:text="${shopItem.getQuantityOfStock()}"></td>
     </tr>
 </table>

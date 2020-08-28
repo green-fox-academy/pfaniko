@@ -34,6 +34,7 @@ public class WebShopController {
     List<ShopItem> filteredShopItems = shopItems.stream()
         .filter(shopItem -> shopItem.getQuantityOfStock() != 0)
         .collect(Collectors.toList());
+
     model.addAttribute("shopItems", filteredShopItems);
     return "webshop";
   }
@@ -41,8 +42,9 @@ public class WebShopController {
   @GetMapping("/cheapest-first")
   public String sortCheapestFirst(Model model) {
     List<ShopItem> sortedShopItems = shopItems.stream()
-        .sorted((shopItem1, shopItem2) -> (int) (shopItem1.getPrice() - shopItem2.getPrice()))
+        .sorted(Comparator.comparingDouble(item->item.getPrice()))
         .collect(Collectors.toList());
+
     model.addAttribute("shopItems", sortedShopItems);
     return "webshop";
   }
@@ -54,6 +56,7 @@ public class WebShopController {
         .filter(shopItem -> shopItem.getDescription().contains(brand) ||
             shopItem.getName().contains(brand))
         .collect(Collectors.toList());
+
     model.addAttribute("shopItems", filteredByBrand);
     return "webshop";
   }
@@ -63,7 +66,8 @@ public class WebShopController {
     double averageStock = shopItems.stream()
         .mapToInt(ShopItem::getQuantityOfStock)
         .average()
-        .orElse(-1);
+        .orElseThrow(RuntimeException::new);
+
     model.addAttribute("averageStock", averageStock);
     return "averagestock";
   }
@@ -73,6 +77,7 @@ public class WebShopController {
     ShopItem mostExpensive = shopItems.stream()
         .max(Comparator.comparingDouble(ShopItem::getPrice))
         .get();
+
     model.addAttribute("shopItems", mostExpensive);
     return "webshop";
   }
@@ -80,11 +85,10 @@ public class WebShopController {
   @PostMapping("/search")
   public String filterBySearch(Model model, String search) {
     List<ShopItem> filteredBySearchWorld = shopItems.stream()
-        .filter(shopItem -> shopItem.getDescription().contains(search) ||
-            shopItem.getDescription().toLowerCase().contains(search) ||
-            shopItem.getName().contains(search) ||
-            shopItem.getName().toLowerCase().contains(search))
+        .filter(shopItem -> shopItem.getDescription().toLowerCase().contains(search.toLowerCase()) ||
+            shopItem.getName().toLowerCase().contains(search.toLowerCase()))
         .collect(Collectors.toList());
+
     model.addAttribute("shopItems", filteredBySearchWorld);
     return "webshop";
   }

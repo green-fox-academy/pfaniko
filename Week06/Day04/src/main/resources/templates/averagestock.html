@@ -7,11 +7,18 @@
 </head>
 <body>
 <header>My Shop</header>
-<a href="/only-available">ONLY AVAILABLE</a>
-<a href="/cheapest-first">CHEAPEST FIRST</a>
-<a href="/contains-nike">CONTAINS NIKE</a>
-<a href="/average-stock">AVERAGE STOCK</a>
-<a href="/most-expensive">MOST EXPENSIVE AVAILABLE</a>
-<h1 th:text="'Average stock: ' + ${averageStock}"></h1>
+<div class="buttons">
+    <a href="/only-available">ONLY AVAILABLE</a>
+    <a href="/cheapest-first">CHEAPEST FIRST</a>
+    <a href="/contains-nike">CONTAINS NIKE</a>
+    <a href="/average-stock">AVERAGE STOCK</a>
+    <a href="/most-expensive">MOST EXPENSIVE AVAILABLE</a>
+</div>
+<div class="searchbar">
+    <label for="search">Search for:</label>
+    <br>
+    <input type="text" placeholder="...something like nike" id="search">
+    <button>Search</button>
+</div>
 </body>
 </html>

@@ -1,4 +1,5 @@
 header {
+    width: 100%;
     display: block;
     font-size: 30px;
     font-weight: bold;
@@ -9,7 +10,6 @@ header {
 }
 
 a {
-    width: 100%;
     background: indianred;
     color: white;
     font-size: small;
@@ -17,6 +17,28 @@ a {
     font-family: Calibri, cursive;
     padding: 5px;
     border-radius: 5px;
+}
+
+.searchbar {
+    font-family: Calibri, cursive;
+    color: indianred;
+    margin-top: 20px;
+}
+
+input {
+    border: 1.5px solid indianred;
+    outline: none;
+}
+
+button {
+    background: indianred;
+    color: white;
+    font-size: small;
+    font-weight: bold;
+    font-family: Calibri, cursive;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
 }
 
 th {
@@ -29,7 +51,7 @@ table {
     margin-bottom: 20px;
 }
 
-td{
+td {
     text-align: center;
     font-family: Calibri, cursive;
 }

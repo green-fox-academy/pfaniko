@@ -10,12 +10,14 @@
 <body>
 <table class="table table-hover">
     <tr>
+        <th>Index</th>
         <th>Name</th>
         <th>Balance</th>
         <th>Type of Animal</th>
         <th>King</th>
     </tr>
-    <tr>
+    <tr th:each="bankAccount:${bankAccounts}">
+        <td th:text="${bankAccountStat.index}"></td>
         <td th:text="${bankAccount.name}"></td>
         <td th:text="|${#numbers.formatDecimal(bankAccount.balance,0,2,'POINT')} Zebra|"></td>
         <td th:text="${bankAccount.animalType}"></td>

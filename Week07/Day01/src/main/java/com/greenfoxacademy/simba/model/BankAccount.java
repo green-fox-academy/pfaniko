@@ -1,5 +1,7 @@
 package com.greenfoxacademy.simba.model;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 public class BankAccount {
   private String name;
   private int balance;
@@ -10,7 +12,7 @@ public class BankAccount {
     this.name = name;
     this.balance = balance;
     this.animalType = animalType;
-    this.isKing = false;
+    this.isKing = name.equals("Simba");
   }
 
   public String getName() {
@@ -37,7 +39,11 @@ public class BankAccount {
     this.animalType = animalType;
   }
 
-  public Boolean getKing() {
+  public Boolean isKing() {
     return isKing;
+  }
+
+  public void setKing(Boolean king) {
+    isKing = king;
   }
 }

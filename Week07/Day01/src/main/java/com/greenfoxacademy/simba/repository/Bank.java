@@ -9,11 +9,11 @@ public class Bank {
 
   public Bank() {
     this.bankAccounts = new ArrayList<>();
-    bankAccounts.add(new BankAccount("Timon", 1500, "meerkat"));
-    bankAccounts.add(new BankAccount("Pumbaa", 3500, "warthog"));
-    bankAccounts.add(new BankAccount("Rafiki", 1500, "mandrill"));
-    bankAccounts.add(new BankAccount("Nala", 6500, "lion"));
-    bankAccounts.add(new BankAccount("Simba", 2000, "lion"));
+    bankAccounts.add(new BankAccount("Timon", 1500, "meerkat", false));
+    bankAccounts.add(new BankAccount("Pumbaa", 3500, "warthog", false));
+    bankAccounts.add(new BankAccount("Rafiki", 1500, "mandrill", false));
+    bankAccounts.add(new BankAccount("Scar", 1000, "lion", true));
+    bankAccounts.add(new BankAccount("Simba", 2000, "lion", false));
   }
 
   public List<BankAccount> getBankAccounts() {

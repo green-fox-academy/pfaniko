@@ -2,7 +2,6 @@ package com.greenfoxacademy.simba.controller;
 
 import com.greenfoxacademy.simba.model.BankAccount;
 import com.greenfoxacademy.simba.repository.Bank;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class BankOfSimbaController {
   private Bank bank = new Bank();
-  BankAccount bankAccount = new BankAccount("Simba", 2000, "lion");
+  BankAccount bankAccount = new BankAccount("Simba", 2000, "lion", false);
 
   @RequestMapping("/show")
   public String addBankAccount(Model model) {

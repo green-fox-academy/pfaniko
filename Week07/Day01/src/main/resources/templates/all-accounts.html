@@ -15,6 +15,7 @@
         <th>Balance</th>
         <th>Type of Animal</th>
         <th>King</th>
+        <th>Good or Bad</th>
     </tr>
     <tr th:each="bankAccount:${bankAccounts}" th:style="${bankAccount.isKing() == true ? 'color: lightseagreen; font-weight:bold' : 'color: black'}">
         <td th:text="${bankAccountStat.index}"></td>
@@ -22,6 +23,7 @@
         <td th:text="|${#numbers.formatDecimal(bankAccount.balance,0,2,'POINT')} Zebra|"></td>
         <td th:text="${bankAccount.animalType}"></td>
         <td th:text="${bankAccount.isKing()} ? 'Yes':'No'"></td>
+        <td th:text="${bankAccount.isBad()} ? 'Bad Guy':'Good Guy'"></td>
     </tr>
 </table>
 </body>

@@ -1,18 +1,18 @@
 package com.greenfoxacademy.simba.model;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 public class BankAccount {
   private String name;
   private int balance;
   private String animalType;
   private Boolean isKing;
+  private Boolean isBad;
 
-  public BankAccount(String name, int balance, String animalType) {
+  public BankAccount(String name, int balance, String animalType, Boolean isBad) {
     this.name = name;
     this.balance = balance;
     this.animalType = animalType;
     this.isKing = name.equals("Simba");
+    this.isBad = isBad;
   }
 
   public String getName() {
@@ -45,5 +45,13 @@ public class BankAccount {
 
   public void setKing(Boolean king) {
     isKing = king;
+  }
+
+  public Boolean isBad() {
+    return isBad;
+  }
+
+  public void setBad(Boolean bad) {
+    isBad = bad;
   }
 }

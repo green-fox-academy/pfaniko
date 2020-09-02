@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Validation</title>
+</head>
+<body>
+<div th:if="${validatedEmail}">
+    <p th:text="${email} + ' is a valid email address'"></p>
+</div>
+<div th:unless="${validatedEmail}">
+<p th:text="${email} + ' is not a valid email address'"></p>
+</div>
+</body>
+</html>

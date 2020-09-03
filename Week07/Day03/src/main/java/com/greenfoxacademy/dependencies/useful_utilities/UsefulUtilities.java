@@ -32,4 +32,10 @@ public class UsefulUtilities {
     model.addAttribute("validatedEmail", utilityService.validateEmail(email));
     return "email";
   }
+
+  @GetMapping("/useful/encode")
+  public String encodeText (Model model, @RequestParam (required = false) String text, @RequestParam int number) {
+    model.addAttribute("encodedText", utilityService.caesar(text, number));
+    return "encode";
+  }
 }

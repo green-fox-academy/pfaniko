@@ -1,4 +1,4 @@
-package com.greenfoxacademy.foxclub.repositories;
+package com.greenfoxacademy.foxclub.services;
 
 import com.greenfoxacademy.foxclub.models.Fox;
 import java.util.ArrayList;

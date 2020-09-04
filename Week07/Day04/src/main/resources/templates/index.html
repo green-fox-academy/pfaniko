@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Fox Club</title>
@@ -11,7 +11,7 @@
 </ul>
 <img src="/assets/greenfox.png" alt="Fox">
 <br>
-<text>This is Mr. Fox. Currently living on pizza and lemonade. He knows 2 tricks.</text>
+<p th:text="'This is ' + ${myFox.getName()} + '. Currently living on ' + ${myFox.getFood()} + ' and '+${myFox.getDrink()}+ '. He knows 2 tricks.'"></p>
 <h1>Known tricks</h1>
 <ul>
     <li>write HTML</li>

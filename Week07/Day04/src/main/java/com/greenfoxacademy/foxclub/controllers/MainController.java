@@ -17,10 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MainController {
   private FoxList foxList;
 
-
-
   @Autowired
-  public MainController(FoxList foxList, Food food) {
+  public MainController(FoxList foxList) {
     this.foxList = foxList;
   }
 
@@ -44,14 +42,14 @@ public class MainController {
 
   @GetMapping("/nutritionStore")
   public String renderNutritionStore(Model model) {
-    model.addAttribute("food", Food[]);
+    model.addAttribute("food", Food.values());
+    model.addAttribute("drink", Drink.values());
     return "nutrition-store";
   }
 
   @PostMapping("/nutritionStore")
   public String renderNutritionStore(@RequestParam(required = false) String name, @ModelAttribute
-      Food food, @ModelAttribute
-      Drink drink ) {
+      Food food, @ModelAttribute Drink drink) {
     Fox myFox = getFox(name);
     myFox.setDrink(drink);
     myFox.setFood(food);

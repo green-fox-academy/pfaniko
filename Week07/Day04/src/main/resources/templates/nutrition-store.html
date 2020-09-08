@@ -9,10 +9,12 @@
 <form action="/nutritionStore" method="post">
     <label for="food">Food</label>
     <select name="food" id="food">
-        <option value="${food}"></option>
+        <option th:each="food:${food}" th:text="${food}"></option>
     </select>
     <label for="drink">Drink</label>
-    <input type="text" name="drink" id="drink">
+    <select name="drink" id="drink">
+        <option th:each="drink:${drink}" th:text="${drink}"></option>
+    </select>
     <button>Change</button>
 </form>
 </body>

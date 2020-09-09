@@ -26,7 +26,7 @@ public class TodosqlApplication implements CommandLineRunner {
     repository.save(new Todo("make the bed", true, true));
     repository.save(new Todo("do the washing up", true, false));
     repository.save(new Todo("clean the bathroom and the kitchen", true, true));
-    repository.save(new Todo("wioe all the surfaces with a cloth", true, false));
+    repository.save(new Todo("wipe all the surfaces with a cloth", true, false));
     repository.save(new Todo("remove the grease", true, true));
   }
 }

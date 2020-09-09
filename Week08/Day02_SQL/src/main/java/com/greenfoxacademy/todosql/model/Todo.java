@@ -21,8 +21,8 @@ public class Todo {
 
   public Todo(String title) {
     this.title = title;
-    this.urgent=false;
-    this.done=false;
+    this.urgent = false;
+    this.done = false;
   }
 
   public Todo(String title, Boolean urgent, Boolean done) {
@@ -43,7 +43,7 @@ public class Todo {
     return urgent;
   }
 
-  public Boolean getDone() {
+  public Boolean isDone() {
     return done;
   }
 }

@@ -10,9 +10,9 @@
 <h1 class="header text-center ">Trending posts</h1>
 <table class="table table-borderless col-6">
     <tr th:each="post:${posts}">
-        <td th:text="${post.getId()}"></td>
-        <td><a href="">+</a></td>
-        <td><a href="">-</a></td>
+        <td th:text="${post.getVotes()}"></td>
+        <td><a th:href="@{/vote-up(id=${post.getId()})}">+</a></td>
+        <td><a th:href="@{/vote-down(id=${post.getId()})}">-</a></td>
         <td><a th:href="@{${post.getUrl()}}" th:text="${post.getTitle()}"></a></td>
     </tr>
 </table>

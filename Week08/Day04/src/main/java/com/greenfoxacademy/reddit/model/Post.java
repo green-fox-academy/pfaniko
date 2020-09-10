@@ -18,6 +18,7 @@ public class Post {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
 
+  private int votes;
   private String title;
   private String url;
 }

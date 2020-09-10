@@ -18,4 +18,16 @@ public class PostService {
   public void addPost(Post newPost) {
     postRepository.save(newPost);
   }
+
+  public void voteUpOnePost(int id) {
+    Post selectedPost = postRepository.findById(id).get();
+    selectedPost.setVotes(selectedPost.getVotes()+ 1);
+    postRepository.save(selectedPost);
+  }
+
+  public void voteDownOnePost(int id) {
+    Post selectedPost = postRepository.findById(id).get();
+    selectedPost.setVotes(selectedPost.getVotes()- 1);
+    postRepository.save(selectedPost);
+  }
 }

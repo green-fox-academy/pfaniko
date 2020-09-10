@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Submit post</title>
+</head>
+<body class="text-center">
+<h1 class="mb-3">Submit a new post</h1>
+<form action="/submit" method="post">
+    <div>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
+    </div>
+    <div>
+        <label for="URL">URL</label>
+        <input type="text" name="URL" id="URL">
+    </div>
+    <button>Submit</button>
+</form>
+</body>
+</html>

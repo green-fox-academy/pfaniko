@@ -5,14 +5,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Setter
 @Getter
 @Entity
+@NoArgsConstructor
 public class Post {
 
   @Id
-  @GeneratedValue (strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
 
-  private String Title;
+  private String title;
+  private String url;
 }

@@ -9,11 +9,11 @@
 <a href="/submit">Submit new post</a>
 <h1 class="header text-center ">Trending posts</h1>
 <table class="table table-borderless col-6">
-    <tr>
-        <td>Id</td>
-        <td>+</td>
-        <td>-</td>
-        <td>Title</td>
+    <tr th:each="post:${posts}">
+        <td th:text="${post.getId()}"></td>
+        <td><a href="">+</a></td>
+        <td><a href="">-</a></td>
+        <td>th:text="${post.getTitle()}</td>
     </tr>
 </table>
 </body>

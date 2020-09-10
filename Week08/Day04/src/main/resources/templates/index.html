@@ -8,12 +8,13 @@
 <body>
 <a href="/submit">Submit new post</a>
 <h1 class="header text-center ">Trending posts</h1>
-<table class="table table-borderless col-6">
+<table class="table table-borderless col-8">
     <tr th:each="post:${posts}">
         <td th:text="${post.getVotes()}"></td>
         <td><a th:href="@{/vote-up(id=${post.getId()})}">+</a></td>
         <td><a th:href="@{/vote-down(id=${post.getId()})}">-</a></td>
         <td><a th:href="@{${post.getUrl()}}" th:text="${post.getTitle()}"></a></td>
+        <td th:text = "${#dates.format(post.getDate(), 'dd.mm.yyyy hh:ss')}"></td>
     </tr>
 </table>
 </body>

@@ -3,6 +3,7 @@ package com.greenfoxacademy.reddit.service;
 import com.greenfoxacademy.reddit.model.Post;
 import com.greenfoxacademy.reddit.repository.PostRepository;
 import java.util.List;
+import java.util.NoSuchElementException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,13 +21,13 @@ public class PostService {
   }
 
   public void voteUpOnePost(int id) {
-    Post selectedPost = postRepository.findById(id).get();
+    Post selectedPost = postRepository.findById(id).orElseThrow (() -> new NoSuchElementException("No such id found"));
     selectedPost.setVotes(selectedPost.getVotes()+ 1);
     postRepository.save(selectedPost);
   }
 
   public void voteDownOnePost(int id) {
-    Post selectedPost = postRepository.findById(id).get();
+    Post selectedPost = postRepository.findById(id).orElseThrow (() -> new NoSuchElementException("No such id found"));
     selectedPost.setVotes(selectedPost.getVotes()- 1);
     postRepository.save(selectedPost);
   }

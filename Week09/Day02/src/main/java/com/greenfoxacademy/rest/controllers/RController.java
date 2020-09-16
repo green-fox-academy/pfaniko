@@ -1,6 +1,7 @@
 package com.greenfoxacademy.rest.controllers;
 
 import com.greenfoxacademy.rest.models.log_entries.LogData;
+import com.greenfoxacademy.rest.models.sith_sentence.SithSentence;
 import com.greenfoxacademy.rest.models.small_tasks.Appended;
 import com.greenfoxacademy.rest.models.array_handler.ArrayHandler;
 import com.greenfoxacademy.rest.models.do_until.DoUntil;
@@ -11,6 +12,7 @@ import com.greenfoxacademy.rest.models.NoInputError;
 import com.greenfoxacademy.rest.services.ArrayHandlerService;
 import com.greenfoxacademy.rest.services.DoUntilService;
 import com.greenfoxacademy.rest.services.LogService;
+import com.greenfoxacademy.rest.services.SithService;
 import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,13 +29,15 @@ public class RController {
   private DoUntilService doUntilService;
   private ArrayHandlerService arrayHandlerService;
   private LogService logService;
+  private SithService sithService;
 
   @Autowired
   public RController(DoUntilService doUntilService,
-                     ArrayHandlerService arrayHandlerService, LogService logService) {
+                     ArrayHandlerService arrayHandlerService, LogService logService, SithService sithService) {
     this.doUntilService = doUntilService;
     this.arrayHandlerService = arrayHandlerService;
     this.logService = logService;
+    this.sithService = sithService;
   }
 
   @GetMapping("/doubling")
@@ -108,5 +112,10 @@ public class RController {
   @GetMapping("/log")
   public LogData getLogs() {
     return logService.fillLogEntries(new LogData());
+  }
+
+  @PostMapping ("/sith")
+  public ResponseEntity <Object> getResponse (@RequestBody SithSentence sithSentence){
+    return ResponseEntity.status(HttpStatus.OK).body(sithService.createYodaResponse(sithSentence.getText()));
   }
 }

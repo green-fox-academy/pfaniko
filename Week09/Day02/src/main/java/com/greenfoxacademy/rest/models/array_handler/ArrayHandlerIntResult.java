@@ -1,4 +1,4 @@
-package com.greenfoxacademy.rest.models;
+package com.greenfoxacademy.rest.models.array_handler;
 
 public class ArrayHandlerIntResult {
   private int result;

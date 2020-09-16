@@ -1,8 +1,8 @@
-package com.greenfoxacademy.rest.service;
+package com.greenfoxacademy.rest.services;
 
-import com.greenfoxacademy.rest.models.ArrayHandler;
-import com.greenfoxacademy.rest.models.ArrayHandlerArrayResult;
-import com.greenfoxacademy.rest.models.ArrayHandlerIntResult;
+import com.greenfoxacademy.rest.models.array_handler.ArrayHandler;
+import com.greenfoxacademy.rest.models.array_handler.ArrayHandlerArrayResult;
+import com.greenfoxacademy.rest.models.array_handler.ArrayHandlerIntResult;
 import org.springframework.stereotype.Service;
 
 @Service

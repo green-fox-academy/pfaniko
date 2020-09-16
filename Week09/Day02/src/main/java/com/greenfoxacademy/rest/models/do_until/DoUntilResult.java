@@ -1,4 +1,4 @@
-package com.greenfoxacademy.rest.models;
+package com.greenfoxacademy.rest.models.do_until;
 
 public class DoUntilResult {
   private int result;

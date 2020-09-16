@@ -1,4 +1,4 @@
-package com.greenfoxacademy.rest.models;
+package com.greenfoxacademy.rest.models.small_tasks;
 
 public class Doubling {
   private int received;

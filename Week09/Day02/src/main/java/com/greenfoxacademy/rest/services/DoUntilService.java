@@ -1,7 +1,7 @@
-package com.greenfoxacademy.rest.service;
+package com.greenfoxacademy.rest.services;
 
-import com.greenfoxacademy.rest.models.DoUntil;
-import com.greenfoxacademy.rest.models.DoUntilResult;
+import com.greenfoxacademy.rest.models.do_until.DoUntil;
+import com.greenfoxacademy.rest.models.do_until.DoUntilResult;
 import org.springframework.stereotype.Service;
 
 @Service

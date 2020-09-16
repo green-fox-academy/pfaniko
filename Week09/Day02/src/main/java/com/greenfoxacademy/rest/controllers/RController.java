@@ -1,10 +1,12 @@
 package com.greenfoxacademy.rest.controllers;
 
 import com.greenfoxacademy.rest.models.Appended;
+import com.greenfoxacademy.rest.models.ArrayHandler;
 import com.greenfoxacademy.rest.models.DoUntil;
 import com.greenfoxacademy.rest.models.Doubling;
 import com.greenfoxacademy.rest.models.Greeting;
 import com.greenfoxacademy.rest.models.NoInputError;
+import com.greenfoxacademy.rest.service.ArrayHandlerService;
 import com.greenfoxacademy.rest.service.DoUntilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,10 +21,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RController {
   private DoUntilService doUntilService;
+  private ArrayHandlerService arrayHandlerService;
 
   @Autowired
-  public RController(DoUntilService doUntilService) {
+  public RController(DoUntilService doUntilService,
+                     ArrayHandlerService arrayHandlerService) {
     this.doUntilService = doUntilService;
+    this.arrayHandlerService = arrayHandlerService;
   }
 
   @GetMapping("/doubling")
@@ -62,14 +67,28 @@ public class RController {
   }
 
   @PostMapping("/dountil/{action}")
-  public ResponseEntity<Object> getResult(@PathVariable String action,
-                                          @RequestBody DoUntil doUntil) {
+  public ResponseEntity<Object> calculateResult(@PathVariable String action,
+                                                @RequestBody DoUntil doUntil) {
     if (doUntil == null) {
       return ResponseEntity.status(HttpStatus.OK)
           .body(new NoInputError("Please provide a number!"));
     } else {
       return ResponseEntity.status(HttpStatus.OK)
           .body(doUntilService.doActionUntilNumber(action, doUntil));
+    }
+  }
+
+  @PostMapping("/arrays")
+  public ResponseEntity<Object> calculateArrayResult(@RequestBody ArrayHandler arrayHandler) {
+    if (arrayHandler.getWhat() == null) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+          .body(new NoInputError("Please provide what to do with the numbers!"));
+    } else if (arrayHandler.getNumbers() == null) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+          .body(new NoInputError("Please provide the numbers!"));
+    } else {
+      return ResponseEntity.status(HttpStatus.OK)
+          .body(arrayHandlerService.calculateResults(arrayHandler));
     }
   }
 }

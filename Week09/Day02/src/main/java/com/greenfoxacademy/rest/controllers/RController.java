@@ -52,7 +52,7 @@ public class RController {
   }
 
   @GetMapping("/appenda/{appendable}")
-  public ResponseEntity<Object> appendA(@PathVariable(required = false) String appendable) {
+  public ResponseEntity appendA(@PathVariable(required = false) String appendable) {
     if (appendable == null) {
       return new ResponseEntity(HttpStatus.NOT_FOUND);
     } else {

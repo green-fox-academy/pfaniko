@@ -25,7 +25,7 @@ class RControllerTest {
 
   @Test
   void givenInput_whenGetDoubling_returnDoubledInput() throws Exception {
-    mockMvc.perform(get("/doubling?input=5"))
+    mockMvc.perform(get("/doubling").param("input", "5"))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.received", is(5)))
         .andExpect(jsonPath("$.result", is(10)));
@@ -40,7 +40,7 @@ class RControllerTest {
 
   @Test
   void givenAppendableInput_whenAppendA_returnAppendableWithAppendedA() throws Exception {
-    mockMvc.perform(get("/appenda/kuty"))
+    mockMvc.perform(get("/appenda/{appendable}", "kuty"))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.appended", is("kutya")));
   }
@@ -53,28 +53,28 @@ class RControllerTest {
 
   @Test
   void givenNameAndTitle_whenGetGreeting_returnGreetingWithInput() throws Exception {
-    mockMvc.perform(get("/greeter?name=Vader&title=Sith"))
+    mockMvc.perform(get("/greeter").param("name", "Vader").param("title", "sith"))
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$.welcome_message", is("Oh, hi there Vader, my dear Sith!")));
+        .andExpect(jsonPath("$.welcome_message", is("Oh, hi there Vader, my dear sith!")));
   }
 
   @Test
-  void missingBothInput_whenGetGreeting_returnBadRequestStatusWithErrorMessage () throws Exception {
+  void missingBothInput_whenGetGreeting_returnBadRequestStatusWithErrorMessage() throws Exception {
     mockMvc.perform(get("/greeter"))
         .andExpect(status().isBadRequest())
         .andExpect(jsonPath("$.error", is("Please provide a name and a title!")));
   }
 
   @Test
-  void missingNameInput_whenGetGreeting_returnBadRequestStatusWithErrorMessage () throws Exception {
-    mockMvc.perform(get("/greeter?title=sith"))
+  void missingNameInput_whenGetGreeting_returnBadRequestStatusWithErrorMessage() throws Exception {
+    mockMvc.perform(get("/greeter").param("title", "sith"))
         .andExpect(status().isBadRequest())
         .andExpect(jsonPath("$.error", is("Please provide a name!")));
   }
 
   @Test
-  void missingTitleInput_whenGetGreeting_returnBadRequestStatusWithErrorMessage () throws Exception {
-    mockMvc.perform(get("/greeter?name=Vader"))
+  void missingTitleInput_whenGetGreeting_returnBadRequestStatusWithErrorMessage() throws Exception {
+    mockMvc.perform(get("/greeter").param("name", "Vader"))
         .andExpect(status().isBadRequest())
         .andExpect(jsonPath("$.error", is("Please provide a title!")));
   }

@@ -32,4 +32,21 @@ class GuardianControllerTest {
         .andExpect(status().isBadRequest())
         .andExpect(jsonPath("$.error", is("I am Groot!")));
   }
+
+  @Test
+  void givenDistanceAnTimeInput_whenCalculateSpeed_thenReturnsCalculatedSpeed() throws Exception {
+    mockMvc.perform(get("/yondu").param("distance", "100.0").param("time", "10.0"))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.distance").value("100.0"))
+        .andExpect(jsonPath("$.time").value("10.0"))
+        .andExpect(jsonPath("$.speed").value("10.0"));
+  }
+
+  @Test
+  void givenMissingInput_whenCalculateSpeed_thenReturnsBadRequestStatusAndErrorMessage()
+      throws Exception {
+    mockMvc.perform(get("/yondu"))
+        .andExpect(status().isBadRequest())
+        .andExpect(jsonPath("$.error").value("Please provide both the distance and the time!"));
+  }
 }

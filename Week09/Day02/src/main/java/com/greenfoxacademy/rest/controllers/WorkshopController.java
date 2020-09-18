@@ -25,15 +25,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class RController {
+public class WorkshopController {
   private DoUntilService doUntilService;
   private ArrayHandlerService arrayHandlerService;
   private LogService logService;
   private SithService sithService;
 
   @Autowired
-  public RController(DoUntilService doUntilService,
-                     ArrayHandlerService arrayHandlerService, LogService logService, SithService sithService) {
+  public WorkshopController(DoUntilService doUntilService,
+                            ArrayHandlerService arrayHandlerService, LogService logService, SithService sithService) {
     this.doUntilService = doUntilService;
     this.arrayHandlerService = arrayHandlerService;
     this.logService = logService;
@@ -116,6 +116,6 @@ public class RController {
 
   @PostMapping ("/sith")
   public ResponseEntity <Object> getResponse (@RequestBody SithSentence sithSentence){
-    return ResponseEntity.status(HttpStatus.OK).body(sithService.createYodaResponse(sithSentence.getText()));
+    return ResponseEntity.status(HttpStatus.OK).body(sithService.createResponse(sithSentence.getText()));
   }
 }

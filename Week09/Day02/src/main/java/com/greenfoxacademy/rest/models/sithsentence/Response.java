@@ -2,11 +2,11 @@ package com.greenfoxacademy.rest.models.sithsentence;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class YodaSentence {
+public class Response {
   @JsonProperty("sith_text")
   private String sithText;
 
-  public YodaSentence(String sithText) {
+  public Response(String sithText) {
     this.sithText = sithText;
   }
 

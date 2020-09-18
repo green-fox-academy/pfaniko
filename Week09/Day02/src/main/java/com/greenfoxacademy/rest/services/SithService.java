@@ -1,14 +1,12 @@
 package com.greenfoxacademy.rest.services;
 
-import com.greenfoxacademy.rest.models.sithsentence.YodaSentence;
-import java.util.Arrays;
-import java.util.stream.Collectors;
+import com.greenfoxacademy.rest.models.sithsentence.Response;
 import org.springframework.stereotype.Service;
 
 @Service
 public class SithService {
 
-  public YodaSentence createYodaResponse(String sentence) {
+  public Response createResponse(String sentence) {
     String[] sentences = sentence.split("\\. ");
     for (int i = 0; i < sentences.length; i++) {
       String temp = "";
@@ -25,7 +23,7 @@ public class SithService {
     }
     String yodaSentence =
         String.join(". " + "Arrgh. Uhmm. ", sentences);
-    return new YodaSentence(yodaSentence);
+    return new Response(yodaSentence);
   }
 
   private String capitalize(String word) {

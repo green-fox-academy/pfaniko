@@ -14,12 +14,12 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class RControllerTest {
+class WorkshopControllerTest {
 
   private final MockMvc mockMvc;
 
   @Autowired
-  public RControllerTest(MockMvc mockMvc) {
+  public WorkshopControllerTest(MockMvc mockMvc) {
     this.mockMvc = mockMvc;
   }
 

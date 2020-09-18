@@ -1,6 +1,6 @@
 package com.greenfoxacademy.rest.services;
 
-import com.greenfoxacademy.rest.models.sith_sentence.YodaSentence;
+import com.greenfoxacademy.rest.models.sithsentence.YodaSentence;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
@@ -21,10 +21,10 @@ public class SithService {
         counter = counter + 2;
       }
       words[0] = capitalize(words[0]);
-      sentences[i] = Arrays.stream(words).collect(Collectors.joining(" "));
+      sentences[i] = String.join(" ", words);
     }
     String yodaSentence =
-        Arrays.stream(sentences).collect(Collectors.joining(". " + "Arrgh. Uhmm. "));
+        String.join(". " + "Arrgh. Uhmm. ", sentences);
     return new YodaSentence(yodaSentence);
   }
 

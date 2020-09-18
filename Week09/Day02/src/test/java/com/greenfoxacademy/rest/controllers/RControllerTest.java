@@ -47,7 +47,7 @@ class RControllerTest {
 
   @Test
   void givenNoInput_whenAppendA_returnNotFoundStatus() throws Exception {
-    mockMvc.perform(get("/appenda"))
+    mockMvc.perform(get("/appenda/"))
         .andExpect(status().isNotFound());
   }
 

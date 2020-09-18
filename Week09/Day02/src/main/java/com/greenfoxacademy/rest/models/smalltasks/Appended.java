@@ -1,4 +1,4 @@
-package com.greenfoxacademy.rest.models.small_tasks;
+package com.greenfoxacademy.rest.models.smalltasks;
 
 public class Appended {
   private String appended;
@@ -9,9 +9,5 @@ public class Appended {
 
   public String getAppended() {
     return appended;
-  }
-
-  public void setAppended(String appended) {
-    this.appended = appended;
   }
 }

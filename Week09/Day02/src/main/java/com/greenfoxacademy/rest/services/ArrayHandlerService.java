@@ -1,8 +1,8 @@
 package com.greenfoxacademy.rest.services;
 
-import com.greenfoxacademy.rest.models.array_handler.ArrayHandler;
-import com.greenfoxacademy.rest.models.array_handler.ArrayHandlerArrayResult;
-import com.greenfoxacademy.rest.models.array_handler.ArrayHandlerIntResult;
+import com.greenfoxacademy.rest.models.arrayhandler.ArrayHandler;
+import com.greenfoxacademy.rest.models.arrayhandler.ArrayHandlerArrayResult;
+import com.greenfoxacademy.rest.models.arrayhandler.ArrayHandlerIntResult;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,14 +16,6 @@ public class ArrayHandlerService {
     } else {
       return new ArrayHandlerArrayResult(doubleArray(arrayHandler));
     }
-  }
-
-  private int[] doubleArray(ArrayHandler arrayHandler) {
-    int [] doubledArray = new int[arrayHandler.getNumbers().length];
-    for (int i = 0; i < arrayHandler.getNumbers().length; i++) {
-      doubledArray[i] = arrayHandler.getNumbers()[i] * 2;
-    }
-    return doubledArray;
   }
 
   private int sum(ArrayHandler arrayHandler) {
@@ -40,5 +32,13 @@ public class ArrayHandlerService {
       multiplied = multiplied * arrayHandler.getNumbers()[i];
     }
     return multiplied;
+  }
+
+  private int[] doubleArray(ArrayHandler arrayHandler) {
+    int [] doubledArray = new int[arrayHandler.getNumbers().length];
+    for (int i = 0; i < arrayHandler.getNumbers().length; i++) {
+      doubledArray[i] = arrayHandler.getNumbers()[i] * 2;
+    }
+    return doubledArray;
   }
 }

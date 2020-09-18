@@ -1,4 +1,4 @@
-package com.greenfoxacademy.rest.models.small_tasks;
+package com.greenfoxacademy.rest.models.smalltasks;
 
 public class Doubling {
   private int received;
@@ -15,13 +15,5 @@ public class Doubling {
 
   public int getResult() {
     return result;
-  }
-
-  public void setReceived(int received) {
-    this.received = received;
-  }
-
-  public void setResult(int result) {
-    this.result = result;
   }
 }

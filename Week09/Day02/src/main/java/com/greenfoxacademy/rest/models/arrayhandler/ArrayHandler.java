@@ -1,4 +1,4 @@
-package com.greenfoxacademy.rest.models.array_handler;
+package com.greenfoxacademy.rest.models.arrayhandler;
 
 public class ArrayHandler {
   private String what;

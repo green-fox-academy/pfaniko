@@ -1,4 +1,4 @@
-package com.greenfoxacademy.rest.models.do_until;
+package com.greenfoxacademy.rest.models.dountil;
 
 public class DoUntilResult {
   private int result;
@@ -9,9 +9,5 @@ public class DoUntilResult {
 
   public int getResult() {
     return result;
-  }
-
-  public void setResult(int result) {
-    this.result = result;
   }
 }

@@ -1,7 +1,7 @@
 package com.greenfoxacademy.rest.services;
 
-import com.greenfoxacademy.rest.models.log_entries.Log;
-import com.greenfoxacademy.rest.models.log_entries.LogData;
+import com.greenfoxacademy.rest.models.logentries.Log;
+import com.greenfoxacademy.rest.models.logentries.LogData;
 import com.greenfoxacademy.rest.repositories.LogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,8 @@ public class LogService {
     logRepository.save(log);
   }
 
-  public LogData fillLogEntries (LogData logData){
+  public LogData fillLogEntries (){
+    LogData logData = new LogData();
     logData.setEntries(logRepository.findAll());
     logData.setEntry_count(logRepository.findAll().size());
     return logData;

@@ -1,4 +1,4 @@
-package com.greenfoxacademy.rest.models.do_until;
+package com.greenfoxacademy.rest.models.dountil;
 
 public class DoUntil {
   private int until;

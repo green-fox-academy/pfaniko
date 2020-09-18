@@ -1,13 +1,13 @@
 package com.greenfoxacademy.rest.controllers;
 
-import com.greenfoxacademy.rest.models.log_entries.LogData;
-import com.greenfoxacademy.rest.models.sith_sentence.SithSentence;
-import com.greenfoxacademy.rest.models.small_tasks.Appended;
-import com.greenfoxacademy.rest.models.array_handler.ArrayHandler;
-import com.greenfoxacademy.rest.models.do_until.DoUntil;
-import com.greenfoxacademy.rest.models.small_tasks.Doubling;
-import com.greenfoxacademy.rest.models.small_tasks.Greeting;
-import com.greenfoxacademy.rest.models.log_entries.Log;
+import com.greenfoxacademy.rest.models.logentries.LogData;
+import com.greenfoxacademy.rest.models.sithsentence.SithSentence;
+import com.greenfoxacademy.rest.models.smalltasks.Appended;
+import com.greenfoxacademy.rest.models.arrayhandler.ArrayHandler;
+import com.greenfoxacademy.rest.models.dountil.DoUntil;
+import com.greenfoxacademy.rest.models.smalltasks.Doubling;
+import com.greenfoxacademy.rest.models.smalltasks.Greeting;
+import com.greenfoxacademy.rest.models.logentries.Log;
 import com.greenfoxacademy.rest.models.NoInputError;
 import com.greenfoxacademy.rest.services.ArrayHandlerService;
 import com.greenfoxacademy.rest.services.DoUntilService;
@@ -111,7 +111,7 @@ public class RController {
 
   @GetMapping("/log")
   public LogData getLogs() {
-    return logService.fillLogEntries(new LogData());
+    return logService.fillLogEntries();
   }
 
   @PostMapping ("/sith")

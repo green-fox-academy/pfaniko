@@ -1,4 +1,4 @@
-package com.greenfoxacademy.rest.models.sith_sentence;
+package com.greenfoxacademy.rest.models.sithsentence;
 
 public class SithSentence {
   private String text;

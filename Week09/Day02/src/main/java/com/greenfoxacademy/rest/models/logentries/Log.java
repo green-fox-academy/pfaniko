@@ -1,4 +1,4 @@
-package com.greenfoxacademy.rest.models.log_entries;
+package com.greenfoxacademy.rest.models.logentries;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;

@@ -6,8 +6,8 @@
 <body>
 <th th:fragment="links">
     <ul>
-        <li><a href="/"></a>Information</li>
-        <li><a href="/nutritionStore">Nutrition Store</a></li>
+        <li><a th:href="'/?name=' + ${name}"></a>Information</li>
+        <li><a th:href="'/nutritionStore?name=' + ${name}">Nutrition Store</a></li>
         <li><a href="">Trick Center</a></li>
         <li><a href="">Action Histroy</a></li>
     </ul>

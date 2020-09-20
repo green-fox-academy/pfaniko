@@ -6,7 +6,7 @@
 </head>
 <body>
 <div th:insert="header.html :: links"></div>
-<form action="/nutritionStore" method="post">
+<form th:action="'/nutritionStore?name=' + ${name}" method="post">
     <label for="food">Food</label>
     <select name="food" id="food">
         <option th:each="food:${food}" th:text="${food}"></option>

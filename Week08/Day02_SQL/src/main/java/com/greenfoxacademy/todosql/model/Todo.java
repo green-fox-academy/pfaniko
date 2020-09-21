@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Table
 public class Todo {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
   private String title;
   private Boolean urgent;
@@ -39,11 +39,23 @@ public class Todo {
     return id;
   }
 
-  public Boolean getUrgent() {
+  public Boolean isUrgent() {
     return urgent;
   }
 
   public Boolean isDone() {
     return done;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public void setUrgent(Boolean urgent) {
+    this.urgent = urgent;
+  }
+
+  public void setDone(Boolean done) {
+    this.done = done;
   }
 }

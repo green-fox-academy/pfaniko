@@ -9,15 +9,20 @@
 <div th:insert="header.html :: links"></div>
 <img src="/assets/greenfox.png" alt="Fox">
 <br>
-<p th:text="'This is ' + ${myFox.getName()} + '. Currently living on ' + ${myFox.getFood()} + ' and ' + ${myFox.getDrink()} + '. He knows ' + (${myFox.hasZeroTricks()}?'0 tricks':${myFox.getTricks()})"></p>
-<h1>Known tricks</h1>
-<div th:if="${myFox.hasZeroTricks() == true}">
-    <p>You know no tricks yet. Go and learn some.</p>
+<div th:if="${name == null}">
+    <p th:text="${error}"></p>
 </div>
-<div th:unless="${myFox.hasZeroTricks() == true}">
-    <ul th:each="${myFox.getTricks()}">
-        <li th:text="${myFox.getTricks()}"></li>
-    </ul>
+<div th:unless="${name == null}">
+    <p th:text="'This is ' + ${myFox.getName()} + '. Currently living on ' + ${myFox.getFood()} + ' and ' + ${myFox.getDrink()} + '. He knows ' + (${myFox.getTricks().isEmpty()}?'0 tricks':${myFox.tricks.size()} + ' tricks.')"></p>
+    <h1>Known tricks</h1>
+    <div th:if="${myFox.getTricks().isEmpty() == true}">
+        <p>You know no tricks yet. Go and learn some.</p>
+    </div>
+    <div th:unless="${myFox.getTricks().isEmpty() == true}">
+        <ul th:each="trick:${myFox.getTricks()}">
+            <li th:text="${trick.getDisplayValue()}"></li>
+        </ul>
+    </div>
 </div>
 </body>
 </html>

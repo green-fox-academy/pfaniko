@@ -1,6 +1,8 @@
 package com.greenfoxacademy.todosql;
 
+import com.greenfoxacademy.todosql.model.Assignee;
 import com.greenfoxacademy.todosql.model.Todo;
+import com.greenfoxacademy.todosql.repository.AssigneeRepository;
 import com.greenfoxacademy.todosql.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -9,11 +11,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class TodosqlApplication implements CommandLineRunner {
-  public TodoRepository repository;
+  public TodoRepository todoRepository;
+  public AssigneeRepository assigneeRepository;
 
   @Autowired
-  public TodosqlApplication(TodoRepository repository) {
-    this.repository = repository;
+  public TodosqlApplication(TodoRepository todoRepository, AssigneeRepository assigneeRepository) {
+    this.todoRepository = todoRepository;
+    this.assigneeRepository = assigneeRepository;
   }
 
   public static void main(String[] args) {
@@ -22,11 +26,13 @@ public class TodosqlApplication implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-    repository.save(new Todo("daily task", false, false));
-    repository.save(new Todo("make the bed", true, true));
-    repository.save(new Todo("do the washing up", true, false));
-    repository.save(new Todo("clean the bathroom and the kitchen", true, true));
-    repository.save(new Todo("wipe all the surfaces with a cloth", true, false));
-    repository.save(new Todo("remove the grease", true, true));
+    Assignee a = new Assignee("Ani","ani@gmail.com");
+    assigneeRepository.save(a);
+    todoRepository.save(new Todo("daily task", false, false, a));
+    todoRepository.save(new Todo("make the bed", true, true, a));
+    todoRepository.save(new Todo("do the washing up", true, false, a));
+    todoRepository.save(new Todo("clean the bathroom and the kitchen", true, true, a));
+    todoRepository.save(new Todo("wipe all the surfaces with a cloth", true, false, a));
+    todoRepository.save(new Todo("remove the grease", true, true, a));
   }
 }

@@ -16,14 +16,18 @@
             <th>Title</th>
             <th>Urgent</th>
             <th>Done</th>
-            <th></th>
-            <th></th>
+            <th>Assignee Name</th>
+            <th>Assignee Email</th>
+            <th>Delete</th>
+            <th>Change</th>
         </tr>
         <tr th:each="todo:${todos}">
             <td th:text="${todo.getId()}"></td>
             <td th:text="${todo.getTitle()}"></td>
             <td th:text="${todo.isUrgent()}"></td>
             <td th:text="${todo.isDone()}"></td>
+            <td th:text="${todo.getAssignee().getName()}"></td>
+            <td th:text="${todo.getAssignee().getEmail()}"></td>
             <td>
                 <form th:action="'/todo/' + ${todo.getId()} + '/delete'" method="post">
                     <button class="page-link">delete</button>

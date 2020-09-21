@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -72,11 +71,11 @@ public class TodoController {
   }
 
   private void modifySelectedTodoWithInput(long id, String title, boolean isUrgent,
-                                                  boolean isDone) {
-    Todo mytodo = todoRepository.findById(id).orElseThrow(NoSuchElementException::new);
-    mytodo.setTitle(title);
-    mytodo.setUrgent(isUrgent);
-    mytodo.setDone(isDone);
-    todoRepository.save(mytodo);
+                                           boolean isDone) {
+    Todo myTodo = todoRepository.findById(id).orElseThrow(NoSuchElementException::new);
+    myTodo.setTitle(title);
+    myTodo.setUrgent(isUrgent);
+    myTodo.setDone(isDone);
+    todoRepository.save(myTodo);
   }
 }

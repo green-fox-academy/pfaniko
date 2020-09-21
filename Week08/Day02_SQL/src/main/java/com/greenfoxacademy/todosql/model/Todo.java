@@ -4,17 +4,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table
 public class Todo {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
   private String title;
-  private Boolean urgent;
-  private Boolean done;
+  private boolean urgent;
+  private boolean done;
 
   public Todo() {
   }
@@ -25,10 +26,21 @@ public class Todo {
     this.done = false;
   }
 
-  public Todo(String title, Boolean urgent, Boolean done) {
+  public Todo(String title, boolean urgent, boolean done) {
     this.title = title;
     this.urgent = urgent;
     this.done = done;
+  }
+
+  @ManyToOne
+  private Assignee assignee;
+
+  public Todo(String title, boolean urgent, boolean done,
+              Assignee assignee) {
+    this.title = title;
+    this.urgent = urgent;
+    this.done = done;
+    this.assignee = assignee;
   }
 
   public String getTitle() {
@@ -47,15 +59,19 @@ public class Todo {
     return done;
   }
 
+  public Assignee getAssignee() {
+    return assignee;
+  }
+
   public void setTitle(String title) {
     this.title = title;
   }
 
-  public void setUrgent(Boolean urgent) {
+  public void setUrgent(boolean urgent) {
     this.urgent = urgent;
   }
 
-  public void setDone(Boolean done) {
+  public void setDone(boolean done) {
     this.done = done;
   }
 }

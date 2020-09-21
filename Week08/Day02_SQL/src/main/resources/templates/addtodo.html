@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Create New Todo</title>
+</head>
+<body>
+<h2>Add new todo</h2>
+<form class="form-group" th:action="add" th:method="post">
+    <div>
+        <input type="text" name="newTodo">
+    </div>
+    <button type="submit" class="btn-dark">Submit</button>
+</form>
+</body>
+</html>

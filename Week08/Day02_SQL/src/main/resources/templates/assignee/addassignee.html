@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <title>Create New Todo</title>
+    <title>Create New Assignee</title>
 </head>
 <body>
-<h2>Add new todo</h2>
-<form class="form-group" th:action="add" th:method="post">
-    <div>
-        <input type="text" name="newTodo">
-    </div>
+<h2>Add assignee</h2>
+<form class="form-group" th:action="add" th:method="post" th:object="${assignee}">
+    <label for="name">Name of the Assignee</label><br>
+    <input type="text" name="name" id="name" th:field="*{name}"><br>
+    <label for="email">Email Address of the Assignee</label><br>
+    <input type="email" name="email" id="email" th:field="*{email}"><br>
     <button type="submit" class="btn-dark">Submit</button>
 </form>
 </body>

@@ -1,7 +1,10 @@
 package com.greenfoxacademy.todosql.model;
 
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,13 +14,13 @@ import javax.persistence.OneToMany;
 public class Assignee {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private int id;
+  private long id;
 
   private String name;
   private String email;
 
-  @OneToMany(mappedBy = "assignee")
-  private List<Todo> todos;
+  @OneToMany(mappedBy = "assignee",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  private final List<Todo> todos = new ArrayList<Todo>();
 
   public Assignee() {
   }
@@ -27,7 +30,7 @@ public class Assignee {
     this.email = email;
   }
 
-  public int getId() {
+  public long getId() {
     return id;
   }
 
@@ -41,6 +44,18 @@ public class Assignee {
 
   public List<Todo> getTodos() {
     return todos;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
   }
 }
 

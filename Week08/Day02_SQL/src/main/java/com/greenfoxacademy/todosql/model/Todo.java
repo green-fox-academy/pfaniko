@@ -1,12 +1,12 @@
 package com.greenfoxacademy.todosql.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity
 public class Todo {
@@ -26,13 +26,7 @@ public class Todo {
     this.done = false;
   }
 
-  public Todo(String title, boolean urgent, boolean done) {
-    this.title = title;
-    this.urgent = urgent;
-    this.done = done;
-  }
-
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   private Assignee assignee;
 
   public Todo(String title, boolean urgent, boolean done,
@@ -43,24 +37,28 @@ public class Todo {
     this.assignee = assignee;
   }
 
-  public String getTitle() {
-    return title;
-  }
-
   public long getId() {
     return id;
   }
 
-  public Boolean isUrgent() {
+  public String getTitle() {
+    return title;
+  }
+
+  public boolean isUrgent() {
     return urgent;
   }
 
-  public Boolean isDone() {
+  public boolean isDone() {
     return done;
   }
 
   public Assignee getAssignee() {
     return assignee;
+  }
+
+  public void setId(long id) {
+    this.id = id;
   }
 
   public void setTitle(String title) {
@@ -73,5 +71,9 @@ public class Todo {
 
   public void setDone(boolean done) {
     this.done = done;
+  }
+
+  public void setAssignee(Assignee assignee) {
+    this.assignee = assignee;
   }
 }

@@ -27,7 +27,9 @@ public class TodosqlApplication implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
     Assignee a = new Assignee("Ani","ani@gmail.com");
+    Assignee emptyAssignee = new Assignee("","");
     assigneeRepository.save(a);
+    assigneeRepository.save(emptyAssignee);
     todoRepository.save(new Todo("daily task", false, false, a));
     todoRepository.save(new Todo("make the bed", true, true, a));
     todoRepository.save(new Todo("do the washing up", true, false, a));

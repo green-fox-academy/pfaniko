@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>List Of Assignees</title>
+</head>
+<body>
+<div class="container">
+    <h1>List of assignees</h1><br>
+    <a th:href="'/todo/assignee/add'">Add new assignee</a><br>
+    <table class="table table-striped table-sm table-bordered table-hover">
+        <tr>
+            <th>Name</th>
+            <th>Email Address</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+        <tr th:each="assignee:${assignees}">
+            <td th:text="${assignee.getName()}"></td>
+            <td th:text="${assignee.getEmail()}"></td>
+            <td>
+                <form th:action="'/todo/assignee/' + ${assignee.getId()} + '/delete'" method="post">
+                    <button class="page-link">delete</button>
+                </form>
+            </td>
+            <td>
+                <form th:action="'/todo/assignee/' + ${assignee.getId()} + '/edit'">
+                    <button class="page-link">edit</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

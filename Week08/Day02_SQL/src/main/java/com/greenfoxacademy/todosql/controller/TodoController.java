@@ -1,6 +1,7 @@
 package com.greenfoxacademy.todosql.controller;
 
 import com.greenfoxacademy.todosql.model.Todo;
+import com.greenfoxacademy.todosql.repository.AssigneeRepository;
 import com.greenfoxacademy.todosql.repository.TodoRepository;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,10 +20,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/todo")
 public class TodoController {
   private final TodoRepository todoRepository;
+  private final AssigneeRepository assigneeRepository;
 
   @Autowired
-  public TodoController(TodoRepository todoRepository) {
+  public TodoController(TodoRepository todoRepository, AssigneeRepository assigneeRepository) {
     this.todoRepository = todoRepository;
+    this.assigneeRepository = assigneeRepository;
   }
 
   @GetMapping(value = {"/", "/list"})
@@ -37,24 +41,33 @@ public class TodoController {
     } else {
       model.addAttribute("todos", notActives);
     }
-    return "todolist";
+    return "main";
   }
 
   @GetMapping("/add")
-  public String renderAddTodo() {
-    return "addtodo";
+  public String renderAddTodo(Model model) {
+    model.addAttribute("todo", new Todo());
+    return "/todo/addtodo";
   }
 
   @GetMapping("/{id}/edit")
   public String renderEditTodo(@PathVariable long id, Model model) {
-    Todo myTodo = todoRepository.findById(id).orElseThrow(NoSuchElementException::new);
-    model.addAttribute("todo", myTodo);
-    return "edittodo";
+    Todo todoToEdit = todoRepository.findById(id).orElseThrow(NoSuchElementException::new);
+    model.addAttribute("todoToEdit", todoToEdit);
+    model.addAttribute("allAssignees", assigneeRepository.findAll());
+    return "todo/edittodo";
   }
 
   @PostMapping("/add")
-  public String addNewTodo(String newTodo) {
-    todoRepository.save(new Todo(newTodo));
+  public String addNewTodo(@ModelAttribute Todo newTodo) {
+    newTodo.setAssignee(assigneeRepository.findAssigneeByName(""));
+    todoRepository.save(newTodo);
+    return "redirect:/todo/";
+  }
+
+  @PostMapping("/{id}/edit")
+  public String editTodo(@PathVariable long id, @ModelAttribute Todo todoToEdit) {
+    modifySelectedTodo(todoToEdit);
     return "redirect:/todo/";
   }
 
@@ -64,18 +77,7 @@ public class TodoController {
     return "redirect:/todo/";
   }
 
-  @PostMapping("/{id}/edit")
-  public String editTodo(@PathVariable long id, String title, boolean isUrgent, boolean isDone) {
-    modifySelectedTodoWithInput(id, title, isUrgent, isDone);
-    return "redirect:/todo/";
-  }
-
-  private void modifySelectedTodoWithInput(long id, String title, boolean isUrgent,
-                                           boolean isDone) {
-    Todo myTodo = todoRepository.findById(id).orElseThrow(NoSuchElementException::new);
-    myTodo.setTitle(title);
-    myTodo.setUrgent(isUrgent);
-    myTodo.setDone(isDone);
-    todoRepository.save(myTodo);
+  private void modifySelectedTodo(Todo todoToEdit) {
+    todoRepository.save(todoToEdit);
   }
 }

@@ -66,7 +66,7 @@ public class TodoController {
   }
 
   @PostMapping("/{id}/edit")
-  public String editTodo(@PathVariable long id, @ModelAttribute Todo todoToEdit) {
+  public String editTodo(@ModelAttribute Todo todoToEdit) {
     modifySelectedTodo(todoToEdit);
     return "redirect:/todo/";
   }

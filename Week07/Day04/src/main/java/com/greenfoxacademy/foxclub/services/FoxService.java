@@ -17,21 +17,26 @@ public class FoxService {
     this.foxRepository = foxRepository;
   }
 
-  public void addNewFox(String name) {
-    foxRepository.getFoxes().add(new Fox(name));
+  public void addFox(Fox myFox) {
+    foxRepository.save(myFox);
   }
 
   public Fox getFox(String name) {
-    return foxRepository.getFoxes().stream()
-        .filter(fox1 -> fox1.getName().equals(name))
-        .findFirst()
-        .orElseThrow(() -> new NoSuchElementException(
-            "This fox does not exists, please log in to create your own fox!"));
+    return foxRepository.findByName(name);
   }
 
   public void addTrick(Fox myFox, Trick trick) {
     List<Trick> tempTricks = myFox.getTricks();
     tempTricks.add(trick);
     myFox.setTricks(tempTricks);
+    foxRepository.save(myFox);
+  }
+
+  public void changeFox(Fox myFox) {
+    Fox foxToUpdate =
+        foxRepository.findById(myFox.getId()).orElseThrow(NoSuchElementException::new);
+    foxToUpdate.setFood(myFox.getFood());
+    foxToUpdate.setDrink(myFox.getDrink());
+    foxRepository.save(foxToUpdate);
   }
 }

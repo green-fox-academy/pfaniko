@@ -6,14 +6,15 @@
 </head>
 <body>
 <div th:insert="header.html :: links"></div>
-<form th:action="'/nutritionStore?name=' + ${name}" method="post">
+<form th:object="${myFox}" th:action="'/nutritionStore?name=' + ${name}" method="post">
+    <input type="hidden" th:value="*{id}" th:field="*{id}">
     <label for="food">Food</label>
-    <select name="food" id="food">
-        <option th:each="food:${food}" th:text="${food}"></option>
+    <select id="food" th:field="*{food}">
+        <option th:each="food:${allFood}" th:text="${food}" th:value="${food}"></option>
     </select>
     <label for="drink">Drink</label>
-    <select name="drink" id="drink">
-        <option th:each="drink:${drink}" th:text="${drink}"></option>
+    <select name="drink" id="drink" th:field="*{drink}">
+        <option th:each="drink:${allDrink}" th:text="${drink}" th:value="${drink}"></option>
     </select>
     <button>Change</button>
 </form>

@@ -9,9 +9,6 @@
 <div th:insert="header.html :: links"></div>
 <img src="/assets/greenfox.png" alt="Fox">
 <br>
-<div th:if="${name == null}">
-    <p th:text="${error}"></p>
-</div>
 <div th:unless="${name == null}">
     <p th:text="'This is ' + ${myFox.getName()} + '. Currently living on ' + ${myFox.getFood()} + ' and ' + ${myFox.getDrink()} + '. He knows ' + (${myFox.getTricks().isEmpty()}?'0 tricks':${myFox.tricks.size()} + ' tricks.')"></p>
     <h1>Known tricks</h1>

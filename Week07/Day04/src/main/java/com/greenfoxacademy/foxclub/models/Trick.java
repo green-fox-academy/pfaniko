@@ -5,7 +5,7 @@ public enum Trick {
   CIRCULATE("Circulate After Own Tail"),
   STEAL("Steal Chicken"), PLAYGUITAR("Play Guitar");
 
-  private String displayValue;
+  private final String displayValue;
 
   Trick(String displayValue) {
     this.displayValue = displayValue;

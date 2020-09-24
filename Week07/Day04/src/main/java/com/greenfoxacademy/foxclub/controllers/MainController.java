@@ -27,8 +27,7 @@ public class MainController {
   }
 
   @GetMapping(value = "/foxclub")
-  public String renderMainPage(@RequestParam(required = false) Long userId, Model model) {
-    model.addAttribute("userId", userId);
+  public String renderMainPage() {
     return "main";
   }
 
@@ -41,7 +40,7 @@ public class MainController {
   @GetMapping("/login")
   public String renderLogin(@RequestParam long userId, Model model) {
     model.addAttribute("userId", userId);
-    return "login";
+    return "getfox";
   }
 
   @GetMapping(value = "/")
@@ -76,8 +75,16 @@ public class MainController {
 
   @PostMapping("register")
   public String addNewUser(@ModelAttribute User user) {
-    userService.addUser(user);
-    return "redirect:foxclub/?userId=" + user.getId();
+    if (userService.checkIfExists(user)) {
+      if (userService.checkIfValid(user)) {
+        return "redirect:login/?userId=" + user.getId();
+      } else {
+        return "register";
+      }
+    } else {
+      userService.addUser(user);
+      return "redirect:login/?userId=" + user.getId();
+    }
   }
 
   @PostMapping("/login")

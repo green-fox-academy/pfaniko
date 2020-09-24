@@ -22,4 +22,12 @@ public class UserService {
   public User getUser(long userId) {
     return userRepository.findById(userId).orElseThrow(NoSuchElementException::new);
   }
+
+  public boolean checkIfExists(User user) {
+    return userRepository.findByUsername(user.getUsername()) != null;
+  }
+
+  public boolean checkIfValid(User user) {
+    return user.getPassword().equals(userRepository.findByUsername(user.getUsername()).getPassword());
+  }
 }

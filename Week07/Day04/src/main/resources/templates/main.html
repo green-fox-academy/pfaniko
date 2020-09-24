@@ -9,7 +9,7 @@
 <h3 th:style="'color:green'">Get your own fox!</h3><br>
 <a href="/register">Register here</a><br>
 <h3 th:style="'color:green'">If you already have a fox, please login!</h3><br>
-<a href="/login">Login here</a><br>
+<a th:href="'/login?userId=' + ${userId}">Login here</a><br>
 <img src="/assets/greenfox.png" alt="Fox">
 </body>
 </html>

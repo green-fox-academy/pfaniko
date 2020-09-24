@@ -6,9 +6,9 @@
 <body>
 <th th:fragment="links">
     <ul>
-        <li><a th:href="'/?name=' + ${name}">Information</a></li>
-        <li><a th:href="'/nutritionStore?name=' + ${name}">Nutrition Store</a></li>
-        <li><a th:href="'/trickCenter?name=' + ${name}">Trick Center</a></li>
+        <li><a th:href="'/?userId=' + ${userId} + '&name=' + ${name}">Information</a></li>
+        <li><a th:href="'/nutritionStore?userId=' + ${userId} + '&name=' + ${name}">Nutrition Store</a></li>
+        <li><a th:href="'/trickCenter?userId=' + ${userId} + '&name=' + ${name}">Trick Center</a></li>
         <li><a href="">Action History</a></li>
     </ul>
 </th>

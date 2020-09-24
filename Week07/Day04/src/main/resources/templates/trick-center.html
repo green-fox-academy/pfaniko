@@ -6,7 +6,7 @@
 </head>
 <body>
 <div th:insert="header.html :: links"></div>
-<form th:action="'/trickCenter?name=' + ${name}" method="post">
+<form th:action="'/trickCenter?userId=' + ${userId} + '&name=' + ${name}" method="post">
     <label for="trick">Tricks</label>
     <select name="trick" id="trick">
         <option th:each="trick:${trick}" th:text="${trick.displayValue}"></option>

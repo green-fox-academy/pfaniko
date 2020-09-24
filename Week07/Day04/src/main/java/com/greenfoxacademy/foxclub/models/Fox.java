@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Fox {
@@ -22,6 +23,9 @@ public class Fox {
 
   private Food food;
   private Drink drink;
+
+  @ManyToOne (fetch = FetchType.EAGER)
+  private User user;
 
   public Fox() {
   }
@@ -71,5 +75,13 @@ public class Fox {
 
   public void setId(long id) {
     this.id = id;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
   }
 }

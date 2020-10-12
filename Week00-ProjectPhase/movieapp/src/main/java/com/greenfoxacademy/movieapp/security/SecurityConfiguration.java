@@ -1,5 +1,6 @@
 package com.greenfoxacademy.movieapp.security;
 
+import com.greenfoxacademy.movieapp.models.CustomAuthenticationEntryPoint;
 import com.greenfoxacademy.movieapp.security.filters.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,6 +14,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
@@ -23,6 +25,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Autowired
   JwtRequestFilter jwtRequestFilter;
+
+  @Autowired
+  CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
 
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -37,8 +42,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .and().formLogin();
     http.csrf().disable()
         .authorizeRequests().antMatchers("/authenticate").permitAll().anyRequest().authenticated()
+        .and().exceptionHandling().authenticationEntryPoint(authenticationEntryPoint())
         .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+  }
+
+  @Bean
+  public AuthenticationEntryPoint authenticationEntryPoint() {
+    return new CustomAuthenticationEntryPoint();
   }
 
   @Override
